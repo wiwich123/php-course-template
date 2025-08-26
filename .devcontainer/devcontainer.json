@@ -8,16 +8,13 @@
       "onAutoForward": "openPreview"
     }
   },
-  "postCreateCommand": "sudo bash -c 'a2enmod rewrite && service apache2 start'",
+  "postCreateCommand": "sudo bash -c 'a2enmod rewrite && service apache2 start || apache2ctl start'",
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
         "xdebug.php-debug"
-      ],
-      "settings": {
-        "php.validate.executablePath": "/usr/local/bin/php"
-      }
+      ]
     }
   }
 }
