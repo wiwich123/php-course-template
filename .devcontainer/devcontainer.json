@@ -1,27 +1,23 @@
 {
   "image": "mcr.microsoft.com/devcontainers/php:1-8.2-bullseye",
-  "features": {
-    "ghcr.io/devcontainers/features/apache:1": {
-      "version": "2.4"
-    },
-    "ghcr.io/devcontainers/features/mysql:1": {
-      "version": "8.0"
-    }
-  },
-  "forwardPorts": [80, 3306],
+  "features": {},
+  "forwardPorts": [80],
   "portsAttributes": {
     "80": {
       "label": "Apache Web Server",
       "onAutoForward": "openPreview"
     }
   },
-  "postCreateCommand": "sudo service apache2 start",
+  "postCreateCommand": "sudo bash -c 'a2enmod rewrite && service apache2 start'",
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
         "xdebug.php-debug"
-      ]
+      ],
+      "settings": {
+        "php.validate.executablePath": "/usr/local/bin/php"
+      }
     }
   }
 }
