@@ -8,13 +8,16 @@
       "onAutoForward": "openPreview"
     }
   },
-  "postCreateCommand": "sudo bash /workspaces/$(ls /workspaces | head -n1)/.devcontainer/config/setup-apache.sh",
+  "postCreateCommand": "sudo bash -c 'apt-get update && apt-get install -y vim && mkdir -p /workspaces/php-course-template/sites/skuit/www && chown -R www-data:www-data /workspaces/php-course-template/sites/skuit && chmod -R 755 /workspaces/php-course-template/sites/skuit && cp /workspaces/php-course-template/.devcontainer/skuit.conf /etc/apache2/sites-available/ && a2dissite 000-default && a2ensite skuit && a2enmod rewrite && service apache2 restart'",
   "customizations": {
     "vscode": {
       "extensions": [
         "bmewburn.vscode-intelephense-client",
         "xdebug.php-debug"
-      ]
+      ],
+      "settings": {
+        "php.validate.executablePath": "/usr/local/bin/php"
+      }
     }
   }
 }
